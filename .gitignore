@@ -1,0 +1,17 @@
+# 相依套件
+node_modules/
+
+# 渲染輸出（可由 npm run render 重新產生，不進版控）
+output/
+dist/
+
+# 暫存 / 偵錯檔
+*.log
+render-debug.png
+
+# 編輯器 / vite 快取
+.vite/
+
+# 作業系統雜項
+.DS_Store
+Thumbs.db
