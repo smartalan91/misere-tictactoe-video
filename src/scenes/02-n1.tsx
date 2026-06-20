@@ -20,18 +20,18 @@ export default makeScene2D(function* (view) {
   const cap = caption('棋盤只有一格，Alice 只有一種下法', {y: 320});
   view.add(cap);
   yield* cap.opacity(1, 0.6);
-  yield* waitFor(2.5);
+  yield* waitFor(3.4);
 
   // Alice 被迫落子，立刻形成 1 子連線
   yield* board.place(0, 0, 'A', 0.6);
   yield* board.line([[0, 0], [0, 0]], COLORS.line, 0.1);
   yield* cap.text('一下子就連成 1 子一線 —— 立刻輸掉', 0.4);
-  yield* waitFor(1.5);
+  yield* waitFor(2.1);
 
   const badge = resultBadge('先手必輸', COLORS.lose, {y: 340});
   view.add(badge);
   yield* all(cap.opacity(0, 0.4), badge.opacity(1, 0.6), badge.scale(1, 0.6));
-  yield* waitFor(2.5);
+  yield* waitFor(3.4);
 
   yield* all(head.opacity(0, 0.6), board.node.opacity(0, 0.6), badge.opacity(0, 0.6));
 });

@@ -53,12 +53,12 @@ export default makeScene2D(function* (view) {
   view.add(table);
 
   yield* sequence(0.4, ...rows.map(r => r.opacity(1, 0.4)));
-  yield* waitFor(2.5);
+  yield* waitFor(3.8);
 
   const badge = resultBadge('N ≥ 3 一律平手', COLORS.draw, {y: 380});
   view.add(badge);
   yield* all(badge.opacity(1, 0.6), badge.scale(1, 0.6));
-  yield* waitFor(2);
+  yield* waitFor(3);
 
   const note = new Txt({
     text: '接下來證明一般情況：先手不會輸 + 後手不會輸 → 平手',
@@ -70,7 +70,7 @@ export default makeScene2D(function* (view) {
   });
   view.add(note);
   yield* note.opacity(1, 0.5);
-  yield* waitFor(3);
+  yield* waitFor(4.5);
 
   yield* all(head.opacity(0, 0.6), table.opacity(0, 0.6), badge.opacity(0, 0.6), note.opacity(0, 0.6));
 });

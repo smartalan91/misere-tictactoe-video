@@ -4,9 +4,26 @@ import {spawn, execSync} from 'child_process';
 import {existsSync, mkdirSync, readdirSync, statSync, rmSync} from 'fs';
 import {setTimeout as sleep} from 'timers/promises';
 
-const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const BROWSER_CANDIDATES = [
+  process.env.CHROME,
+  'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+  `${process.env.LOCALAPPDATA}\\Google\\Chrome\\Application\\chrome.exe`,
+  'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+  'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+].filter(Boolean);
 const OUT = 'output';
 const RENDER_TIMEOUT_MS = 30 * 60 * 1000;
+
+function findBrowser() {
+  const browser = BROWSER_CANDIDATES.find(path => existsSync(path));
+  if (!browser) {
+    throw new Error(
+      'Chrome/Edge was not found. Install Google Chrome, Microsoft Edge, or set CHROME to the browser exe path.',
+    );
+  }
+  return browser;
+}
 
 function killTree(pid) {
   try {
@@ -57,7 +74,7 @@ if (existsSync(OUT)) rmSync(OUT, {recursive: true, force: true});
 mkdirSync(OUT, {recursive: true});
 
 const browser = await puppeteer.launch({
-  executablePath: CHROME,
+  executablePath: findBrowser(),
   headless: true,
   args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=swiftshader', '--window-size=1700,1000'],
   defaultViewport: {width: 1700, height: 1000},

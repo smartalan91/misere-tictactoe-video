@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "vite",
     "build": "vite build",
-    "render": "node render.mjs"
+    "render": "node render.mjs",
+    "merge-audio": "node merge-audio.mjs"
   },
   "dependencies": {
     "@motion-canvas/2d": "3.17.2",

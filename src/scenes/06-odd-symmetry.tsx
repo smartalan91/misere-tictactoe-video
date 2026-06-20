@@ -20,12 +20,12 @@ export default makeScene2D(function* (view) {
   const cap = caption('策略：先手第一步，先佔正中心', {y: 410});
   view.add(cap);
   yield* cap.opacity(1, 0.5);
-  yield* waitFor(1.5);
+  yield* waitFor(2.7);
   yield* board.place(2, 2, 'A', 0.6);
-  yield* waitFor(1.5);
+  yield* waitFor(2.7);
 
   yield* cap.text('之後，後手下哪一格，先手就下「關於中心點對稱」的那一格', 0.4);
-  yield* waitFor(2);
+  yield* waitFor(3.5);
 
   // 對稱箭頭 helper：從後手格 → 經過中心 → 先手鏡像格
   const arrows: Line[] = [];
@@ -48,12 +48,12 @@ export default makeScene2D(function* (view) {
     arrows.push(line);
     yield* all(line.opacity(1, 0.3), line.end(1, 0.5));
     yield* board.place(to[0], to[1], 'A', 0.4);
-    yield* waitFor(0.6);
+    yield* waitFor(1.1);
   }
 
   yield* mirror([0, 3]);
   yield* mirror([3, 0]);
-  yield* waitFor(1);
+  yield* waitFor(1.8);
   yield* all(...arrows.map(a => a.opacity(0, 0.4)));
 
   // 移到左邊，右邊列出「為什麼不會輸」
@@ -74,13 +74,13 @@ export default makeScene2D(function* (view) {
   view.add(b1);
   view.add(b2);
   yield* sequence(1.5, b1.opacity(1, 0.5), b2.opacity(1, 0.5));
-  yield* waitFor(3);
+  yield* waitFor(5.3);
 
   const badge = resultBadge('先手不會輸', COLORS.draw, {y: 400});
   badge.position([430, 320]);
   view.add(badge);
   yield* all(badge.opacity(1, 0.6), badge.scale(1, 0.6));
-  yield* waitFor(2.5);
+  yield* waitFor(4.4);
 
   yield* all(
     head.opacity(0, 0.6),

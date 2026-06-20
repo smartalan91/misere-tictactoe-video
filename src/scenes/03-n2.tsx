@@ -27,7 +27,7 @@ export default makeScene2D(function* (view) {
   const cap = caption('利用旋轉與對稱，前兩步其實只有兩種情形', {y: 380});
   view.add(cap);
   yield* cap.opacity(1, 0.6);
-  yield* waitFor(2);
+  yield* waitFor(2.5);
 
   const left = new Board(2, {cellSize: 150});
   left.node.position([-380, -20]);
@@ -49,10 +49,10 @@ export default makeScene2D(function* (view) {
   yield* all(left.place(0, 0, 'A'), right.place(0, 0, 'A'));
   yield* all(left.place(0, 1, 'B'), right.place(1, 1, 'B'));
   yield* all(labL.opacity(1, 0.4), labR.opacity(1, 0.4));
-  yield* waitFor(2.5);
+  yield* waitFor(3.1);
 
   yield* cap.text('接下來 Alice 第三步，不論下在哪一格…', 0.4);
-  yield* waitFor(1.5);
+  yield* waitFor(1.9);
 
   // 第三步：兩邊都被迫連線
   yield* all(left.place(1, 1, 'A'), right.place(0, 1, 'A'));
@@ -61,12 +61,12 @@ export default makeScene2D(function* (view) {
     right.line([[0, 0], [0, 1]], COLORS.line),
   );
   yield* cap.text('…都會自己連成一線', 0.4);
-  yield* waitFor(2);
+  yield* waitFor(2.5);
 
   const badge = resultBadge('先手必輸', COLORS.lose, {y: 360});
   view.add(badge);
   yield* all(cap.opacity(0, 0.4), badge.opacity(1, 0.6), badge.scale(1, 0.6));
-  yield* waitFor(2.5);
+  yield* waitFor(3.1);
 
   yield* all(
     head.opacity(0, 0.6),
