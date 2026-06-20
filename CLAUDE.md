@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 專案目的
 
 把 `Misere Tic-Tac-Toe.pdf`（反井字遊戲的證明）做成一支教學動畫影片，給「離散數學趣談」期末作業用。
-用 [Motion Canvas](https://motioncanvas.io) 3.17 製作，輸出 1920×1080 / 30fps、全長約 2 分 57 秒的 mp4
+用 [Motion Canvas](https://motioncanvas.io) 3.17 製作，輸出 1920×1080 / 30fps、全長約 4 分 22 秒的 mp4
 （作業上限 12 分鐘）。動畫**無聲**；旁白由組員依 `script.md` 另外配音，成品影片放在雲端硬碟、不進版控。
 
 ## 常用指令

@@ -30,13 +30,13 @@ export default makeScene2D(function* (view) {
   const list = new Layout({direction: 'column', layout: true, gap: 32, alignItems: 'start', y: -40});
   points.forEach(p => list.add(p));
   view.add(list);
-  yield* sequence(0.7, ...points.map(p => p.opacity(1, 0.4)));
-  yield* waitFor(2);
+  yield* sequence(1.5, ...points.map(p => p.opacity(1, 0.4)));
+  yield* waitFor(7);
 
   const badge = resultBadge('只要雙方都聰明，N ≥ 3 永遠平手', COLORS.draw, {y: 280});
   view.add(badge);
   yield* all(badge.opacity(1, 0.6), badge.scale(1, 0.6));
-  yield* waitFor(3);
+  yield* waitFor(8.5);
 
   const thanks = new Txt({
     text: '謝謝觀看！',
@@ -49,7 +49,7 @@ export default makeScene2D(function* (view) {
   });
   view.add(thanks);
   yield* thanks.opacity(1, 0.6);
-  yield* waitFor(2.5);
+  yield* waitFor(7.2);
 
   yield* all(head.opacity(0, 0.6), list.opacity(0, 0.6), badge.opacity(0, 0.6), thanks.opacity(0, 0.6));
 });

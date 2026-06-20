@@ -20,7 +20,7 @@ export default makeScene2D(function* (view) {
   const cap = caption('偶數棋盤沒有「正中心格」，改由後手當鏡像方：先手下哪，後手就下中心對稱位置', {y: 400});
   view.add(cap);
   yield* cap.opacity(1, 0.5);
-  yield* waitFor(2.5);
+  yield* waitFor(3.9);
 
   const arrows: Line[] = [];
   function* mirror(from: [number, number]) {
@@ -39,11 +39,11 @@ export default makeScene2D(function* (view) {
     arrows.push(line);
     yield* all(line.opacity(1, 0.3), line.end(1, 0.5));
     yield* board.place(to[0], to[1], 'B', 0.4);
-    yield* waitFor(0.5);
+    yield* waitFor(0.8);
   }
   yield* mirror([0, 1]);
   yield* mirror([1, 0]);
-  yield* waitFor(1);
+  yield* waitFor(1.6);
   yield* all(...arrows.map(a => a.opacity(0, 0.4)));
 
   yield* all(board.node.position([-450, 20], 0.7), cap.opacity(0, 0.4));
@@ -57,13 +57,13 @@ export default makeScene2D(function* (view) {
   view.add(b1);
   view.add(b2);
   yield* sequence(1.2, b1.opacity(1, 0.5), b2.opacity(1, 0.5));
-  yield* waitFor(3);
+  yield* waitFor(4.7);
 
   const badge = resultBadge('雙方平手', COLORS.draw, {y: 300});
   badge.position([420, 300]);
   view.add(badge);
   yield* all(badge.opacity(1, 0.6), badge.scale(1, 0.6));
-  yield* waitFor(2.5);
+  yield* waitFor(3.9);
 
   yield* all(
     head.opacity(0, 0.6),

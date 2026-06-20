@@ -21,7 +21,7 @@ export default makeScene2D(function* (view) {
   const cap = caption('格子數不多，全部局面有限 —— 可用電腦「枚舉 / Min-Max」搜尋所有下法', {y: 380});
   view.add(cap);
   yield* cap.opacity(1, 0.6);
-  yield* waitFor(3);
+  yield* waitFor(3.9);
 
   const board = new Board(3, {cellSize: 160});
   board.node.position([0, 10]);
@@ -34,15 +34,15 @@ export default makeScene2D(function* (view) {
   for (let r = 0; r < 3; r++)
     for (let c = 0; c < 3; c++) moves.push([r, c, DRAW3[r][c]]);
   yield* sequence(0.18, ...moves.map(([r, c, p]) => board.place(r, c, p, 0.3)));
-  yield* waitFor(1);
+  yield* waitFor(1.3);
 
   yield* cap.text('雙方都採最佳策略時，沒有人會被迫先連線', 0.4);
-  yield* waitFor(2);
+  yield* waitFor(2.6);
 
   const badge = resultBadge('雙方平手', COLORS.draw, {y: 360});
   view.add(badge);
   yield* all(cap.opacity(0, 0.4), badge.opacity(1, 0.6), badge.scale(1, 0.6));
-  yield* waitFor(2.5);
+  yield* waitFor(3.2);
 
   yield* all(head.opacity(0, 0.6), board.node.opacity(0, 0.6), badge.opacity(0, 0.6));
 });
